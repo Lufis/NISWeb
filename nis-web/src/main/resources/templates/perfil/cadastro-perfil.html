@@ -59,24 +59,25 @@
 						class="form-control" th:field="*{nome}" />
 
 				</div>
-						<div class="row">
+				<div class="row">
 
 
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label for="tipo">Atribuir esse perfil para a(s) unidade(s):</label> 
-							<select id="tipo" class="form-control"
-							th:field="*{unidade}">
-							<option value="">Selecione unidade(s)</option>
-							<option th:each="unidade : ${unidades}" th:value="${unidade.nome}"
-								th:text="${unidade.nome}">Unidade</option>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="tipo">Atribuir esse perfil para a(s)
+								unidade(s): </label> <select multiple="multiple" id="tipo"
+								class="form-control" th:field="*{unidade}">
+								<!--<option value="">Selecione unidade(s)</option>-->
+								<option th:each="unidade : ${unidades}"
+									th:value="${unidade.id}" th:text="${unidade.nome}">Unidade</option>
 
-						</select>
+							</select>
 
+
+						</div>
 					</div>
 				</div>
-			</div>
-				
+
 
 				<div class="form-group">
 					<button class="btn  btn-primary" type="submit">Salvar</button>

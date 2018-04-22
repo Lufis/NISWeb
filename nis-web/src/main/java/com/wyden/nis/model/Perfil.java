@@ -1,13 +1,18 @@
 package com.wyden.nis.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -24,9 +29,11 @@ public class Perfil implements Serializable {
 	@NotBlank
 	private String nome;
 
-	@Column(nullable = true, length = 50)
-	@NotBlank
-	private String unidade;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "perfil_unidade", joinColumns = @JoinColumn(name = "perfil_id", referencedColumnName = "id"), 
+    inverseJoinColumns = @JoinColumn(name = "unidade_id", referencedColumnName = "id"))
+	public Set<Unidade> unidade;
 		
 	public Long getId() {
 		return id;
@@ -44,11 +51,13 @@ public class Perfil implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getUnidade() {
+
+
+	public Set<Unidade> getUnidade() {
 		return unidade;
 	}
 
-	public void setUnidade(String unidade) {
+	public void setUnidade(Set<Unidade> unidade) {
 		this.unidade = unidade;
 	}
 
@@ -76,5 +85,6 @@ public class Perfil implements Serializable {
 			return false;
 		return true;
 	}
+	
 
 }

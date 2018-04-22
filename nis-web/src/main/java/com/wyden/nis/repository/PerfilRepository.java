@@ -2,7 +2,6 @@ package com.wyden.nis.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import com.wyden.nis.model.Perfil;
 
 @Repository //Define a classe como um bean do Spring

@@ -1,6 +1,7 @@
 package com.wyden.nis.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -23,6 +25,9 @@ public class Unidade implements Serializable {
 	@Column(nullable = false, length = 50)
 	@NotBlank
 	private String nome;
+	
+	@ManyToMany(mappedBy = "unidade")
+	private Set<Perfil> perfil;
 
 	public Long getId() {
 		return id;
