@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wyden.nis.model.Estado;
 import com.wyden.nis.model.Usuario;
+import com.wyden.nis.service.PerfilService;
 import com.wyden.nis.service.UnidadeService;
 import com.wyden.nis.service.UsuarioService;
 
@@ -28,6 +29,9 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	@Autowired
 	private UnidadeService unidadeService;
+	@Autowired
+	private PerfilService perfilService;
+
 
 	
 	@DeleteMapping("/usuario/{id}")
@@ -52,6 +56,7 @@ public class UsuarioController {
 	public ModelAndView novo(Usuario usuario) {
 		ModelAndView modelAndView = new ModelAndView("usuario/cadastro-usuario");
 		modelAndView.addObject("unidades", unidadeService.findAll());
+		modelAndView.addObject("perfis", perfilService.findAll());
 		modelAndView.addObject("estados", Estado.values());
 		modelAndView.addObject(usuario);		
 		return modelAndView;
