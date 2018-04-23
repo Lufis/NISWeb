@@ -13,11 +13,25 @@ import javax.persistence.ManyToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-@Entity(name = "tbl_unidade")
-public class Unidade implements Serializable {
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-	private static final long serialVersionUID = 1L;
+@Entity(name = "tbl_unidade")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
+public class Unidade implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9077715000896374981L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -28,46 +42,5 @@ public class Unidade implements Serializable {
 	
 	@ManyToMany(mappedBy = "unidade")
 	private Set<Perfil> perfil;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Unidade other = (Unidade) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
 
 }

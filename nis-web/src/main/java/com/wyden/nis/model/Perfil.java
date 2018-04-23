@@ -29,9 +29,12 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode
 public class Perfil implements Serializable {
-
-	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5285351846971957667L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

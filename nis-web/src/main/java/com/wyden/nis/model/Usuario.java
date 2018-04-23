@@ -26,7 +26,10 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class Usuario implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7184637490708124592L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
