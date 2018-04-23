@@ -16,7 +16,18 @@ import javax.persistence.JoinColumn;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity(name = "tbl_perfil")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 public class Perfil implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,57 +45,4 @@ public class Perfil implements Serializable {
     @JoinTable(name = "perfil_unidade", joinColumns = @JoinColumn(name = "perfil_id", referencedColumnName = "id"), 
     inverseJoinColumns = @JoinColumn(name = "unidade_id", referencedColumnName = "id"))
 	public Set<Unidade> unidade;
-		
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-
-	public Set<Unidade> getUnidade() {
-		return unidade;
-	}
-
-	public void setUnidade(Set<Unidade> unidade) {
-		this.unidade = unidade;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Perfil other = (Perfil) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-	
-
 }
