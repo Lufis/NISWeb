@@ -3,14 +3,18 @@ package com.wyden.nis.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.wyden.nis.core.model.commons.converter.BooleanConverter;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -18,12 +22,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "tbl_usuario")
+@Entity(name = "SEG_USUARIO")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(of = { "id" })
 public class Usuario implements Serializable {
 
 	/**
@@ -33,34 +37,34 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "USU_ID_USUARIO")
 	private Long id;
 
-	@Column(nullable = false, length = 80)
 	@NotBlank
-	private String nome;
-
-	@Column(nullable = false, length = 50)
-	@NotBlank
+	@Size(max = 50)
+	@Column(name = "USU_DS_LOGIN")
 	private String login;
-
-	@Column(nullable = false, length = 50)
+	
 	@NotBlank
-	private String perfil;
-
-	@Column(nullable = false, length = 50)
-	@NotBlank
-	private String unidade;
-
-	@Column(nullable = false, length = 50)
-	@NotNull
+	@Size(max = 250)
+	@Column(name = "USU_DS_SENHA")
 	private String senha;
 
-	@Column(nullable = false, length = 50)
-	@NotNull
+	@Size(max = 250)
+	@Column(name = "USU_DS_NOME")
+	private String nome;
+
+	@Size(max = 11)
+	@Column(name = "USU_NR_CPF")
+	private String cpf;
+	
+	@Size(max = 250)
+	@Column(name = "USU_DS_EMAIL")
 	private String email;
 	
-	@Column(nullable = false, length = 50)
 	@NotNull
-	private String estado;
+	@Convert(converter = BooleanConverter.class)
+	@Column(name = "USU_ST_ATIVO")
+	private Boolean situacao;
 	
 }
