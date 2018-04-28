@@ -19,12 +19,10 @@ import com.wyden.nis.service.PerfilService;
 import com.wyden.nis.service.UnidadeService;
 import com.wyden.nis.service.UsuarioService;
 
-
 @Controller
 @RequestMapping("/nis")
 public class UsuarioController {
-	
-	
+
 	@Autowired
 	private UsuarioService usuarioService;
 	@Autowired
@@ -32,51 +30,46 @@ public class UsuarioController {
 	@Autowired
 	private PerfilService perfilService;
 
-
-	
 	@DeleteMapping("/usuario/{id}")
 	public String remover(@PathVariable Long id, RedirectAttributes attributes) {
 		usuarioService.delete(id);
-		
+
 		attributes.addFlashAttribute("mensagem", "Usuário removido com sucesso!");
-		
+
 		return "redirect:/nis/usuario";
 	}
-	
-	
+
 	@GetMapping("/usuario")
 	public ModelAndView listar() {
 		ModelAndView modelAndView = new ModelAndView("usuario/lista-usuario");
 		modelAndView.addObject("usuarios", usuarioService.findAll());
-		
+
 		return modelAndView;
 	}
-	
+
 	@GetMapping("/usuario/novo")
 	public ModelAndView novo(Usuario usuario) {
 		ModelAndView modelAndView = new ModelAndView("usuario/cadastro-usuario");
 		modelAndView.addObject("unidades", unidadeService.findAll());
 		modelAndView.addObject("perfis", perfilService.findAll());
 		modelAndView.addObject("estados", Estado.values());
-		modelAndView.addObject(usuario);		
+		modelAndView.addObject(usuario);
 		return modelAndView;
 	}
-	
+
 	@PostMapping("/usuario/novo")
-	public ModelAndView salvar(@Valid Usuario usuario, BindingResult result,
-			RedirectAttributes attributes) {
+	public ModelAndView salvar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return novo(usuario);
 		}
-		
+
 		usuarioService.save(usuario);
-		
-		
+
 		attributes.addFlashAttribute("mensagem", "Usuário criado com sucesso!");
-		
+
 		return new ModelAndView("redirect:/nis/usuario");
 	}
-	
+
 	@GetMapping("/usuario/{id}")
 	public ModelAndView editar(@PathVariable Long id) {
 		return novo(usuarioService.findOne(id));
