@@ -43,7 +43,6 @@ public class UsuarioController {
 	public ModelAndView listar() {
 		ModelAndView modelAndView = new ModelAndView("usuario/lista-usuario");
 		modelAndView.addObject("usuarios", usuarioService.findAll());
-
 		return modelAndView;
 	}
 

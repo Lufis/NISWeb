@@ -26,12 +26,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "tbl_perfil")
+@Entity(name = "SEG_PERFIL")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(of = { "id" })
 public class Perfil implements Serializable {
 
 	/**

@@ -2,5 +2,11 @@ package com.wyden.nis.model;
 
 public enum Estado {
 
-	ATIVO, INATIVO
+	S (1), N (0);
+	
+	public int estadoBoolean;
+	
+    Estado(int valor) {
+        estadoBoolean = valor;
+    }
 }

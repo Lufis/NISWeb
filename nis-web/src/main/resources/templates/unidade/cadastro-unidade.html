@@ -63,7 +63,15 @@
 					<input id="nome" type="text" class="form-control" 
 						th:field="*{nome}"/>
 				</div>
+				<div class="form-group">
+					<label for="tipo">Situação da Unidade no Sistema:</label> <select
+						id="tipo" class="form-control" th:field="*{estado}">
+						<option value=""></option>
+						<option th:each="estado : ${estados}" th:value="${estado.estadoBoolean}"
+							th:text="#{|estado.${estado}|}">Estado</option>
 
+					</select>
+				</div>
 
 				<div class="form-group">
 					<button class="btn  btn-primary" type="submit">Salvar</button>

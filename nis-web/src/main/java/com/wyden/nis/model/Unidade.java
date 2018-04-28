@@ -24,12 +24,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "tbl_unidade")
+@Entity(name = "SEG_UNIDADE")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(of = { "id" })
 public class Unidade implements Serializable {
 	
 	/**
@@ -50,14 +50,14 @@ public class Unidade implements Serializable {
 	@NotNull
 	@Convert(converter = BooleanConverter.class)
 	@Column(name = "UNI_ST_ATIVO")
-	private Boolean situacao;
+	private Boolean estado;
 	
-	@NotBlank
+	
 	@Size(max = 150)
 	@Column(name = "UNI_DS_URLINTERNO")
 	private String urlInterno;
 	
-	@NotBlank
+
 	@Size(max = 150)
 	@Column(name = "UNI_DS_URLEXTERNO")
 	private String urlExterno;
