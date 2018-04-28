@@ -43,20 +43,23 @@ public class Perfil implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "PER_ID_PERFIL")
 	private Long id;
-	
+
 	@NotBlank
 	@Size(max = 150)
 	@Column(name = "PER_DS_PERFIL")
 	private String nome;
-	
+
 	@NotBlank
 	@Convert(converter = BooleanConverter.class)
 	@Column(name = "PER_ST_ATIVO")
 	private Boolean situacao;
 
 	/*
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "perfil_unidade", joinColumns = @JoinColumn(name = "perfil_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "unidade_id", referencedColumnName = "id"))
-	public Set<Unidade> unidade;
-*/
+	 * @ManyToMany(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinTable(name = "perfil_unidade", joinColumns = @JoinColumn(name =
+	 * "perfil_id", referencedColumnName = "id"), inverseJoinColumns
+	 * = @JoinColumn(name = "unidade_id", referencedColumnName = "id")) public
+	 * Set<Unidade> unidade;
+	 */
 }
