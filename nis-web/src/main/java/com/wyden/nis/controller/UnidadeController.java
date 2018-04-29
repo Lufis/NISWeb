@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.wyden.nis.model.Estado;
+import com.wyden.nis.model.Situacao;
 import com.wyden.nis.model.Unidade;
 import com.wyden.nis.service.UnidadeService;
 
@@ -41,7 +41,7 @@ public class UnidadeController {
 	@GetMapping("/unidade/novo")
 	public ModelAndView novo(Unidade unidade) {
 		ModelAndView modelAndView = new ModelAndView("unidade/cadastro-unidade");
-		modelAndView.addObject("estados", Estado.values());
+		modelAndView.addObject("situacoes", Situacao.values());
 		modelAndView.addObject(unidade);
 
 		return modelAndView;

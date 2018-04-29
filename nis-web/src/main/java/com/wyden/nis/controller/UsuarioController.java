@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.wyden.nis.model.Estado;
+import com.wyden.nis.model.Situacao;
 import com.wyden.nis.model.Usuario;
 import com.wyden.nis.service.PerfilService;
 import com.wyden.nis.service.UnidadeService;
@@ -51,7 +51,7 @@ public class UsuarioController {
 		ModelAndView modelAndView = new ModelAndView("usuario/cadastro-usuario");
 		modelAndView.addObject("unidades", unidadeService.findAll());
 		modelAndView.addObject("perfis", perfilService.findAll());
-		modelAndView.addObject("estados", Estado.values());
+		modelAndView.addObject("situacoes", Situacao.values());
 		modelAndView.addObject(usuario);
 		return modelAndView;
 	}

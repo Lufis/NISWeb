@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wyden.nis.model.Perfil;
+import com.wyden.nis.model.Situacao;
 import com.wyden.nis.service.PerfilService;
 import com.wyden.nis.service.UnidadeService;
 
@@ -25,8 +26,7 @@ public class PerfilController {
 	
 	@Autowired
 	private PerfilService perfilService;
-	@Autowired
-	private UnidadeService unidadeService;
+
 	@DeleteMapping("/perfil/{id}")
 	public String remover(@PathVariable Long id, RedirectAttributes attributes) {
 		perfilService.delete(id);
@@ -50,7 +50,7 @@ public class PerfilController {
 		ModelAndView modelAndView = new ModelAndView("perfil/cadastro-perfil");
 		
 		modelAndView.addObject(perfil);	
-		modelAndView.addObject("unidades", unidadeService.findAll());
+		modelAndView.addObject("situacoes", Situacao.values());
 		
 		return modelAndView;
 	}
@@ -63,7 +63,6 @@ public class PerfilController {
 		}
 		
 		perfilService.save(perfil);
-		
 		
 		attributes.addFlashAttribute("mensagem", "Perfil criado com sucesso!");
 		

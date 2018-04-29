@@ -64,11 +64,11 @@
 						th:field="*{nome}"/>
 				</div>
 				<div class="form-group">
-					<label for="tipo">Situação da Unidade no Sistema:</label> <select
-						id="tipo" class="form-control" th:field="*{estado}">
-						<option value=""></option>
-						<option th:each="estado : ${estados}" th:value="${estado.estadoBoolean}"
-							th:text="#{|estado.${estado}|}">Estado</option>
+					<label for="tipo">Situação:</label> <select
+						id="tipo" class="form-control" th:field="*{situacao}">
+						<option value="">Escolha uma opção</option>
+						<option th:each="situacao : ${situacoes}" th:value="${situacao.situacaoBoolean}"
+							th:text="#{|situacao.${situacao}|}">Situação</option>
 
 					</select>
 				</div>

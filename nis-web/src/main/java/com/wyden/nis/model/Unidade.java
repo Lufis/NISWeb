@@ -31,7 +31,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(of = { "id" })
 public class Unidade implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -46,25 +46,29 @@ public class Unidade implements Serializable {
 	@Size(max = 150)
 	@Column(name = "UNI_DS_UNIDADE")
 	private String nome;
-	
+
 	@NotNull
 	@Convert(converter = BooleanConverter.class)
 	@Column(name = "UNI_ST_ATIVO")
-	private Boolean estado;
-	
-	
+	private Boolean situacao;
+
 	@Size(max = 150)
 	@Column(name = "UNI_DS_URLINTERNO")
 	private String urlInterno;
-	
 
 	@Size(max = 150)
 	@Column(name = "UNI_DS_URLEXTERNO")
 	private String urlExterno;
-	
-	
+
+	public String getSituacaoName() {
+		if (situacao == true) {
+			return "Ativo";
+		} else {
+			return "Inativo";
+		}
+
+	}
 	/*
-	@ManyToMany(mappedBy = "unidade")
-	private Set<Perfil> perfil;
-*/
+	 * @ManyToMany(mappedBy = "unidade") private Set<Perfil> perfil;
+	 */
 }

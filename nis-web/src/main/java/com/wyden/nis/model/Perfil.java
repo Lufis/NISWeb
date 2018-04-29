@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.persistence.JoinColumn;
 
@@ -49,11 +50,20 @@ public class Perfil implements Serializable {
 	@Column(name = "PER_DS_PERFIL")
 	private String nome;
 
-	@NotBlank
+	@NotNull
 	@Convert(converter = BooleanConverter.class)
 	@Column(name = "PER_ST_ATIVO")
 	private Boolean situacao;
 
+	
+	public String getSituacaoName() {
+		if (situacao == true) {
+			return "Ativo";
+		} else {
+			return "Inativo";
+		}
+
+	}
 	/*
 	 * @ManyToMany(cascade = CascadeType.ALL)
 	 * 

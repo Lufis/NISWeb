@@ -43,7 +43,7 @@
 						<tr>
 							<th class="av-table-vinhos-col-codigo">Código</th>
 							<th>Nome</th>
-							<th>Unidade(s)</th>
+							<th>Situação</th>
 							<th class="av-table-vinhos-col-icons"></th>
 						</tr>
 					</thead>
@@ -54,7 +54,7 @@
 							<td><a th:href="@{/nis/perfil/{id}(id=${perfil.id})}"
 								th:text="${perfil.nome}">Perfil</a></td>
 
-							<td th:text="${perfil.unidade}">Unidade</td>
+							<td th:text="${perfil.getSituacaoName()}">Situação</td>
 
 
 							<td class="text-center">

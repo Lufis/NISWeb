@@ -81,7 +81,7 @@
 				
 				<div class="form-group">
 					<label for="tipo">Unidade:</label>
-					<select id="tipo" class="form-control" th:field="*{unidade}">
+					<select id="tipo" class="form-control" >
 						<option value="">Selecione unidade</option>
 						<option th:each="unidade : ${unidades}" th:value="${unidade.nome}"
 							th:text="${unidade.nome}">Unidade</option>
@@ -91,7 +91,7 @@
 				
 				<div class="form-group">
 					<label for="tipo">Perfil:</label>
-					<select id="tipo" class="form-control" th:field="*{perfil}">
+					<select id="tipo" class="form-control" >
 						<option value="">Selecione perfil</option>
 						<option th:each="perfil : ${perfis}" th:value="${perfil.nome}"
 							th:text="${perfil.nome}">Perfil</option>
@@ -100,11 +100,11 @@
 				</div>
 				
 					<div class="form-group">
-					<label for="tipo">Estado do Usuário no Sistema:</label>
-					<select id="tipo" class="form-control" th:field="*{estado}">
-						<option value="">Selecione estado</option>
-						<option th:each="estado : ${estados}" th:value="${estado}"
-							th:text="#{|estado.${estado}|}">Estado</option>
+					<label for="tipo">Situação:</label> <select
+						id="tipo" class="form-control" th:field="*{situacao}">
+						<option value="">Escolha uma opção</option>
+						<option th:each="situacao : ${situacoes}" th:value="${situacao.situacaoBoolean}"
+							th:text="#{|situacao.${situacao}|}">Situação</option>
 
 					</select>
 				</div>
