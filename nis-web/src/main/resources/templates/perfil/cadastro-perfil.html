@@ -44,28 +44,24 @@
 							th:text="${erro.message}">Mensagem erro.</span>
 					</div>
 				</div>
-
-				<div class="alert  alert-success"
-					th:if="${!#strings.isEmpty(mensagem)}">
-					<i class="fa fa-check-circle"></i> <span th:text="${mensagem}">Mensagem
-						sucesso!</span>
+				
+				<div class="alert  alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+					<i class="fa fa-check-circle"></i> <span th:text="${mensagem}">Mensagem sucesso!</span>
 				</div>
-
+				
 				<input type="hidden" th:field="*{id}" />
-
-
 				<div class="form-group">
-					<label for="nome">Nome:</label> <input id="nome" type="text"
-						class="form-control" th:field="*{nome}" />
-
+					<label for="nome">Nome:</label> 
+					<input id="nome" type="text" class="form-control" th:field="*{nome}" />
 				</div>
-			<div class="form-group">
-					<label for="tipo">Situação:</label> <select
-						id="tipo" class="form-control" th:field="*{situacao}">
+				<div class="form-group" style="width: 180px; ">
+					<label for="tipo">Situação:</label> 
+					<select id="tipo" class="form-control" th:field="*{situacao}">
 						<option value="">Escolha uma opção</option>
-						<option th:each="situacao : ${situacoes}" th:value="${situacao.situacaoBoolean}"
-							th:text="#{|situacao.${situacao}|}">Situação</option>
-
+						<option th:each="situacao : ${situacoes}"
+							th:value="${situacao.situacaoBoolean}"
+							th:text="#{|situacao.${situacao}|}">
+						</option>
 					</select>
 				</div>
 

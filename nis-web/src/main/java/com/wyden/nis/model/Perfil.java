@@ -1,24 +1,27 @@
 package com.wyden.nis.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.persistence.JoinColumn;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wyden.nis.core.model.commons.converter.BooleanConverter;
 
 import lombok.AllArgsConstructor;
@@ -28,6 +31,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity(name = "SEG_PERFIL")
+@lombok.ToString(exclude = { "listUnidade" })
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -64,6 +68,16 @@ public class Perfil implements Serializable {
 		}
 
 	}
+	
+	/**
+	 * Atributo que representa a coluna listUnidade
+	 * 
+	 */
+	@Transient
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "SEG_UNIDADE_PERFIL", joinColumns = @JoinColumn(name = "UPR_ID_PERFIL", referencedColumnName = "PER_ID_PERFIL"), inverseJoinColumns = @JoinColumn(name = "UPR_ID_UNIDADE", referencedColumnName = "UNI_ID_UNIDADE"))
+	private List<Unidade> listUnidade;
 	/*
 	 * @ManyToMany(cascade = CascadeType.ALL)
 	 * 
