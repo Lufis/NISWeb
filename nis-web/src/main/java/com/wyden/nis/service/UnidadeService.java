@@ -29,4 +29,8 @@ public class UnidadeService {
 	public void delete(Long id) {
 		repository.delete(id);
 	}
+
+	public List<Unidade> findActiveUnity() {
+		return repository.getUnidadesAtivas();
+	}
 }

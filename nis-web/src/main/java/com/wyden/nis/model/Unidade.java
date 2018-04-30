@@ -37,6 +37,11 @@ public class Unidade implements Serializable {
 	 */
 	private static final long serialVersionUID = -9077715000896374981L;
 
+	public Unidade(Long id, String nome) {
+		this.setId(id);
+		this.setNome(nome);
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "UNI_ID_UNIDADE")

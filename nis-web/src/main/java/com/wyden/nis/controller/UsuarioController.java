@@ -49,8 +49,8 @@ public class UsuarioController {
 	@GetMapping("/usuario/novo")
 	public ModelAndView novo(Usuario usuario) {
 		ModelAndView modelAndView = new ModelAndView("usuario/cadastro-usuario");
-		modelAndView.addObject("unidades", unidadeService.findAll());
-		modelAndView.addObject("perfis", perfilService.findAll());
+		modelAndView.addObject("unidades", unidadeService.findActiveUnity());
+		modelAndView.addObject("perfis", perfilService.findActiveProfile());
 		modelAndView.addObject("situacoes", Situacao.values());
 		modelAndView.addObject(usuario);
 		return modelAndView;

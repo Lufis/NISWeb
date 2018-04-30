@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wyden.nis.model.Perfil;
+import com.wyden.nis.model.Unidade;
 import com.wyden.nis.repository.PerfilRepository;
 
 
@@ -29,5 +30,9 @@ public class PerfilService {
 
 	public void delete(Long id) {
 		repository.delete(id);
+	}
+	
+	public List<Perfil> findActiveProfile() {
+		return repository.getActiveProfiles();
 	}
 }
