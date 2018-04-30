@@ -30,7 +30,7 @@ public class UnidadeService {
 		repository.delete(id);
 	}
 
-	public List<Object[]> findActiveUnity() {
-		return repository.getActiveUnits();
+	public List<Unidade> findActiveUnity() {
+		return repository.getUnidadesAtivas();
 	}
 }

@@ -37,8 +37,9 @@ public class Unidade implements Serializable {
 	 */
 	private static final long serialVersionUID = -9077715000896374981L;
 
-	public Unidade(String nome) {
-		this.nome = nome;
+	public Unidade(Long id, String nome) {
+		this.setId(id);
+		this.setNome(nome);
 	}
 
 	@Id
