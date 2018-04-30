@@ -6,18 +6,17 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wyden.nis.core.model.commons.converter.BooleanConverter;
 
 import lombok.AllArgsConstructor;
@@ -68,16 +67,7 @@ public class Perfil implements Serializable {
 			return "Inativo";
 		}
 	}
-	
-	/**
-	 * Atributo que representa a coluna listUnidade
-	 * 
-	 */
-	@Transient
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "SEG_UNIDADE_PERFIL", joinColumns = @JoinColumn(name = "UPR_ID_PERFIL", referencedColumnName = "PER_ID_PERFIL"), inverseJoinColumns = @JoinColumn(name = "UPR_ID_UNIDADE", referencedColumnName = "UNI_ID_UNIDADE"))
-	private List<Unidade> listUnidade;
+
 	/*
 	 * @ManyToMany(cascade = CascadeType.ALL)
 	 * 
