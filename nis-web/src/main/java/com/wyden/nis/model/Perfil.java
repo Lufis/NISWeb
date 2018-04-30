@@ -1,21 +1,17 @@
 package com.wyden.nis.model;
 
 import java.io.Serializable;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.persistence.JoinColumn;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -27,7 +23,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "SEG_PERFIL")
+@Entity
+@Table(name = "SEG_PERFIL")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -39,6 +36,11 @@ public class Perfil implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -5285351846971957667L;
+	
+	public Perfil(Long id, String nome) {
+		this.setId(id);
+		this.setNome(nome);
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,14 +57,13 @@ public class Perfil implements Serializable {
 	@Column(name = "PER_ST_ATIVO")
 	private Boolean situacao;
 
-	
+	@Transient
 	public String getSituacaoName() {
 		if (situacao == true) {
 			return "Ativo";
 		} else {
 			return "Inativo";
 		}
-
 	}
 	/*
 	 * @ManyToMany(cascade = CascadeType.ALL)

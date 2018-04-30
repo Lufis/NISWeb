@@ -50,7 +50,7 @@ public class UsuarioController {
 	public ModelAndView novo(Usuario usuario) {
 		ModelAndView modelAndView = new ModelAndView("usuario/cadastro-usuario");
 		modelAndView.addObject("unidades", unidadeService.findActiveUnity());
-		modelAndView.addObject("perfis", perfilService.findActiveProfile());
+		modelAndView.addObject("perfis", perfilService.findPerfilAtivo());
 		modelAndView.addObject("situacoes", Situacao.values());
 		modelAndView.addObject(usuario);
 		return modelAndView;
