@@ -32,7 +32,7 @@ public class PerfilService {
 		repository.delete(id);
 	}
 	
-	public List<Perfil> findActiveProfile() {
-		return repository.getActiveProfiles();
+	public List<Perfil> findPerfilAtivo() {
+		return repository.findPerfilAtivo();
 	}
 }
