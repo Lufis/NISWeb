@@ -26,6 +26,8 @@ public class PerfilController {
 	
 	@Autowired
 	private PerfilService perfilService;
+	@Autowired
+	private UnidadeService unidadeService;
 
 	@DeleteMapping("/perfil/{id}")
 	public String remover(@PathVariable Long id, RedirectAttributes attributes) {
@@ -50,6 +52,7 @@ public class PerfilController {
 		ModelAndView modelAndView = new ModelAndView("perfil/cadastro-perfil");
 		
 		modelAndView.addObject(perfil);	
+		modelAndView.addObject("unidades", unidadeService.findUnidadesAtivas());
 		modelAndView.addObject("situacoes", Situacao.values());
 		
 		return modelAndView;

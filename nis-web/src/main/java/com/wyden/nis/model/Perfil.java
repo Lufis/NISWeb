@@ -1,13 +1,21 @@
 package com.wyden.nis.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -36,7 +44,7 @@ public class Perfil implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -5285351846971957667L;
-	
+
 	public Perfil(Long id, String nome) {
 		this.setId(id);
 		this.setNome(nome);
@@ -57,6 +65,10 @@ public class Perfil implements Serializable {
 	@Column(name = "PER_ST_ATIVO")
 	private Boolean situacao;
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "SEG_UNIDADE_PERFIL", joinColumns = @JoinColumn(name = "UPR_ID_PERFIL", referencedColumnName = "PER_ID_PERFIL"), inverseJoinColumns = @JoinColumn(name = "UPR_ID_UNIDADE", referencedColumnName = "UNI_ID_UNIDADE"))
+	public Set<Unidade> unidade;
+
 	@Transient
 	public String getSituacaoName() {
 		if (situacao == true) {
@@ -65,12 +77,5 @@ public class Perfil implements Serializable {
 			return "Inativo";
 		}
 	}
-	/*
-	 * @ManyToMany(cascade = CascadeType.ALL)
-	 * 
-	 * @JoinTable(name = "perfil_unidade", joinColumns = @JoinColumn(name =
-	 * "perfil_id", referencedColumnName = "id"), inverseJoinColumns
-	 * = @JoinColumn(name = "unidade_id", referencedColumnName = "id")) public
-	 * Set<Unidade> unidade;
-	 */
+
 }

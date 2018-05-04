@@ -12,7 +12,7 @@ import com.wyden.nis.model.Perfil;
 public interface PerfilRepository extends JpaRepository<Perfil, Long> {
 
 	@Query("SELECT new Perfil(entity.id, entity.nome) from Perfil entity where entity.situacao = true")
-	public List<Perfil> findPerfilAtivo();
+	public List<Perfil> getPerfisAtivos();
 
 }
 // Deve estender JpaRepository e declarar a entidade (Unity) e o tipo de chave

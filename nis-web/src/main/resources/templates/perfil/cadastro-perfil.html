@@ -68,6 +68,19 @@
 
 					</select>
 				</div>
+				
+				
+
+
+					<div class="form-group">
+					<label for="tipo">Unidade(s):</label>
+					<select multiple id="tipo" class="form-control" th:field="*{unidade}" >
+						<option th:each="unidade : ${unidades}" th:value="${unidade.id}"
+							th:text="${unidade.nome}">Unidade</option>
+
+					</select>
+				</div>
+				
 
 				<div class="form-group">
 					<button class="btn  btn-primary" type="submit">Salvar</button>
