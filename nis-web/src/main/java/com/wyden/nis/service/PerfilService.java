@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wyden.nis.model.Perfil;
-import com.wyden.nis.model.Unidade;
 import com.wyden.nis.repository.PerfilRepository;
 
 

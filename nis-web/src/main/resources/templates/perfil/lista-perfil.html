@@ -54,9 +54,9 @@
 
 							<td><a th:href="@{/nis/perfil/{id}(id=${perfil.id})}"
 								th:text="${perfil.nome}">Perfil</a></td>
-								
-							<td th:text="${perfil.unidade}">Unidades</td>
-							
+
+							<td th:text="${unidadePerfil.findUnidadesPerfil(perfil.id)}">Unidades</td>
+
 							<td th:text="${perfil.getSituacaoName()}">Situação</td>
 
 

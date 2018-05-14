@@ -42,8 +42,9 @@ public class PerfilController {
 	@GetMapping("/perfil")
 	public ModelAndView listar() {
 		ModelAndView modelAndView = new ModelAndView("perfil/lista-perfil");
-		modelAndView.addObject("perfis", perfilService.findAll());
 		
+		modelAndView.addObject("perfis", perfilService.findAll());
+		modelAndView.addObject("unidadePerfil", unidadeService);
 		return modelAndView;
 	}
 	

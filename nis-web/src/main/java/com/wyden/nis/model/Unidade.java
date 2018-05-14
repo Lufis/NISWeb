@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -66,9 +67,8 @@ public class Unidade implements Serializable {
 	@Column(name = "UNI_DS_URLEXTERNO")
 	private String urlExterno;
 
-	@ManyToMany(mappedBy = "unidade")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "unidade")
 	private Set<Perfil> perfil;
-	
 
 	public String getSituacaoName() {
 		if (situacao == true) {

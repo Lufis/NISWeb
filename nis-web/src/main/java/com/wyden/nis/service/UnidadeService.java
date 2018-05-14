@@ -33,4 +33,21 @@ public class UnidadeService {
 	public List<Unidade> findUnidadesAtivas() {
 		return repository.getUnidadesAtivas();
 	}
+
+	public String findUnidadesPerfil(Long idPerfil) {
+		String textListUnidadePerfil = "";
+
+		List<Unidade> listUnidadePerfil = null;
+		listUnidadePerfil = repository.getUnidadePerfil(idPerfil);
+		for (Unidade unidadePerfil : repository.getUnidadePerfil(idPerfil)) {
+			if (listUnidadePerfil.indexOf(unidadePerfil) == (listUnidadePerfil.size() - 1)) {
+				textListUnidadePerfil += unidadePerfil.getNome();
+			} else {
+				textListUnidadePerfil += unidadePerfil.getNome() + ", \t";
+			}
+
+		}
+
+		return textListUnidadePerfil;
+	}
 }
