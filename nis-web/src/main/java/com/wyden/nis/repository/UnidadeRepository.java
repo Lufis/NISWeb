@@ -19,8 +19,7 @@ public interface UnidadeRepository extends JpaRepository<Unidade, Long> {
     @Query("SELECT new Unidade(entity.id, entity.nome) FROM Unidade entity WHERE entity.situacao = TRUE") 
     public List<Unidade> getUnidadesAtivas();
     
-	@Query("SELECT new Unidade(uni.id, uni.nome) FROM Unidade uni, UnidadePerfil uni_per WHERE uni_per.id.idUnidade = uni.id and uni_per.id.idPerfil = ?1")
-	public List<Unidade> getUnidadePerfil(Long idPerfil);
+
 	
 } 
 

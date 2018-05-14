@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.wyden.nis.model.Perfil;
 import com.wyden.nis.model.Situacao;
 import com.wyden.nis.service.PerfilService;
+import com.wyden.nis.service.UnidadePerfilService;
 import com.wyden.nis.service.UnidadeService;
 
 
@@ -28,6 +29,8 @@ public class PerfilController {
 	private PerfilService perfilService;
 	@Autowired
 	private UnidadeService unidadeService;
+	@Autowired
+	private UnidadePerfilService unidadePerfilService;
 
 	@DeleteMapping("/perfil/{id}")
 	public String remover(@PathVariable Long id, RedirectAttributes attributes) {
@@ -44,7 +47,7 @@ public class PerfilController {
 		ModelAndView modelAndView = new ModelAndView("perfil/lista-perfil");
 		
 		modelAndView.addObject("perfis", perfilService.findAll());
-		modelAndView.addObject("unidadePerfil", unidadeService);
+		modelAndView.addObject("unidadePerfil", unidadePerfilService);
 		return modelAndView;
 	}
 	
