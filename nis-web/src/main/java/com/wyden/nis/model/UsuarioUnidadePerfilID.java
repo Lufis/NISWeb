@@ -18,18 +18,23 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(of = { "idUnidade", "idPerfil" })
 
-public class UnidadePerfilID implements Serializable {
+public class UsuarioUnidadePerfilID implements Serializable {
  
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+
 	
-	@Column(name = "UPR_ID_UNIDADE")
+	private static final long serialVersionUID = 1L;
+
+	@Column(name = "UUP_ID_USUARIO")
+	private Long idUsuario;
+	
+	@Column(name = "UPP_ID_UNIDADE")
 	private Long idUnidade;
-
-
-	@Column(name = "UPR_ID_PERFIL")
+	
+	
+	@Column(name = "UPP_ID_PERFIL")
 	private Long idPerfil;
  
 

@@ -32,19 +32,19 @@ public class UnidadePerfilService {
 	}
 
 	public String findUnidadesPerfil(Long idPerfil) {
-		String textListUnidadePerfil = "";
+		StringBuilder textListUnidadePerfil = new StringBuilder();
 
 		List<Unidade> listUnidadePerfil = null;
 		listUnidadePerfil = repository.getUnidadePerfil(idPerfil);
-		for (Unidade unidadePerfil : repository.getUnidadePerfil(idPerfil)) {
+		for (Unidade unidadePerfil : listUnidadePerfil) {
 			if (listUnidadePerfil.indexOf(unidadePerfil) == (listUnidadePerfil.size() - 1)) {
-				textListUnidadePerfil += unidadePerfil.getNome();
+				textListUnidadePerfil.append(unidadePerfil.getNome());
 			} else {
-				textListUnidadePerfil += unidadePerfil.getNome() + ", \t";
+				textListUnidadePerfil.append(unidadePerfil.getNome()).append( ", \t");
 			}
 
 		}
 
-		return textListUnidadePerfil;
+		return textListUnidadePerfil.toString();
 	}
 }

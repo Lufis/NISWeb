@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -46,7 +45,7 @@ public class Usuario implements Serializable {
 	@Size(max = 50)
 	@Column(name = "USU_DS_LOGIN")
 	private String login;
-	
+
 	@NotBlank
 	@Size(max = 250)
 	@Column(name = "USU_DS_SENHA")
@@ -59,14 +58,14 @@ public class Usuario implements Serializable {
 	@Size(max = 11)
 	@Column(name = "USU_NR_CPF")
 	private String cpf;
-	
-	@Size(max = 250)
+			
+	@Size(max = 250)	
 	@Column(name = "USU_DS_EMAIL")
 	private String email;
-	
+
 	@NotNull
 	@Convert(converter = BooleanConverter.class)
 	@Column(name = "USU_ST_ATIVO")
 	private Boolean situacao;
-	
+
 }
